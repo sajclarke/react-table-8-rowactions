@@ -16,38 +16,27 @@ Row actions can be defined as a column type using the following code snippet. No
 
 ```
 {
-    id: "actions",
-    header: "Actions",
+    id: "action",
+    header: "Action",
     size: 100,
     maxSize: 100,
     cell: ({ row }: any) => {
-    const { firstName, lastName } = row.original;
-
-    const onEdit = () => {
-        console.log("click to edit", { firstName, lastName });
-        setIsModalOpen(!isModalOpen);
-    };
-
-    const onDelete = () => {
-        console.log("click to delete", { firstName, lastName });
-    };
+    const { firstName } = row.original;
     return (
-        <div className="flex flex-wrap gap-1">
+        <div>
         <button
-            type="button"
-            onClick={onEdit}
-            className="flex items-center px-4 py-1 bg-blue-500 hover:bg-blue-700 text-white"
+            onClick={() => {
+            console.log("edit", firstName);
+            }}
         >
-            <HiOutlinePencilAlt className="w-4 h-4" />
-            Edit
+            <HiOutlinePencilAlt />
         </button>
         <button
-            type="button"
-            onClick={onDelete}
-            className="flex items-center px-4 py-1 bg-red-500 hover:bg-red-700 text-white"
+            onClick={() => {
+            console.log("delete", firstName);
+            }}
         >
-            <HiOutlineTrash className="w-4 h-4" />
-            Delete
+            <HiOutlineTrash />
         </button>
         </div>
     );
